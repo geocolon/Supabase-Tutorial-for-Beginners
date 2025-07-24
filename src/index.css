@@ -87,3 +87,10 @@ form button {
   font-family: "Poppins";
   cursor: pointer;
 }
+
+.single-line-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 30ch; /* Or max-width: 100%; or whatever fits your layout */
+}
