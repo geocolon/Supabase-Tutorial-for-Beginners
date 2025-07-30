@@ -107,3 +107,16 @@ form button {
   border-radius: 50%;
   cursor: pointer;
 }
+
+/* Order by buttons */
+
+.order-by button {
+  margin-right: 10px;
+  background: var(--primary);
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-family: "Poppins";
+  cursor: pointer;
+}
