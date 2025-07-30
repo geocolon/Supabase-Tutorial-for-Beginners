@@ -19,6 +19,13 @@ const Create = () => {
       return
     }
 
+    // Check that rating is a number between 1 and 10
+    const ratingNum = Number(rating);
+    if (isNaN(ratingNum) || ratingNum < 1 || ratingNum > 10) {
+      setFormError('Rating must be between 1 and 10.');
+      return;
+    }
+
     const { data, error } = await supabase
       .from('smoothies')
       .insert([{ title, method, rating }])
@@ -56,6 +63,8 @@ const Create = () => {
         <input 
           type="number"
           id="rating"
+          min={1}
+          max={10}
           value={rating}
           onChange={(e) => setRating(e.target.value)}
         />

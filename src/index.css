@@ -34,10 +34,11 @@ nav h1 {
 }
 
 /* smoothie grid */
+
 .smoothie-grid {
   margin-top: 40px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* This is what's making it mobile first */
   gap: 40px;
 }
 .smoothie-card {
@@ -120,3 +121,4 @@ form button {
   font-family: "Poppins";
   cursor: pointer;
 }
+

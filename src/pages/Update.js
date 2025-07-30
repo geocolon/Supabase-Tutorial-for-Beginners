@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react";
 
 import supabase from "../config/supabaseClient";
-import { hasFormSubmit } from "@testing-library/user-event/dist/utils";
+// import { hasFormSubmit } from "@testing-library/user-event/dist/utils";
 
 const Update = () => {
   const { id } = useParams();
@@ -21,10 +21,18 @@ const Update = () => {
       return;
     }
 
+    // Check that rating is a number between 1 and 10
+    const ratingNum = Number(rating);
+    if (isNaN(ratingNum) || ratingNum < 1 || ratingNum > 10) {
+      setFormError('Rating must be between 1 and 10.');
+      return;
+    }
+
     const { data, error } = await supabase
       .from('smoothies')
       .update({ title, method, rating })
       .eq('id', id)
+      .select();
 
      if (error) {
         setFormError('Failed to update smoothie.');
@@ -77,6 +85,8 @@ const Update = () => {
         <input 
           type="number"
           id="rating"
+          min={1}
+          max={10}
           value={rating}
           onChange={(e) => setRating(e.target.value)}
         />
